@@ -20,7 +20,7 @@ export default function Home() {
         </h1>
         <p className="text-2xl font-medium max-w-[600px]">
           Use petsoft to easily keep track of pets under your care. Get lifetime
-          access for $$299.
+          access for $299.
         </p>
         <div className="space-x-3 mt-10">
           <Button asChild>
