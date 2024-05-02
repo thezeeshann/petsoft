@@ -2,9 +2,10 @@
 
 import { usePetContext } from "@/lib/hooks";
 import Image from "next/image";
+import PetButton from "./pet-button";
 
 const PetDetails = () => {
-  const { selectedPet } = usePetContext();
+  const { selectedPet, handleCheckoutPet } = usePetContext();
 
   return (
     <section className="flex flex-col w-full h-full">
@@ -23,6 +24,16 @@ const PetDetails = () => {
             <p className="text-3xl font-semibold leading-7 mt-5">
               {selectedPet?.name}
             </p>
+            <div className="ml-auto space-x-2">
+              <PetButton actoinType="edit">Edit</PetButton>
+
+              <PetButton
+                onClick={() => handleCheckoutPet(selectedPet.id)}
+                actoinType="checkout"
+              >
+                Checkout
+              </PetButton>
+            </div>
           </div>
 
           <div className="flex justify-around py-10 px-5 text-center">
