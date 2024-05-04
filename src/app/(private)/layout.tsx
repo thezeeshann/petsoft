@@ -2,17 +2,16 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import BackgroundPattern from "@/components/background-pattern";
 import PetContextProvider from "@/contexts/pet-context-provider";
-import { Pet } from "@/lib/types";
 import SearchContextProvider from "@/contexts/search-context-provider";
+import prisma from "@/lib/db";
+import { Toaster } from "@/components/ui/sonner";
+
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const response = await fetch(
-    "https://bytegrad.com/course-assets/react-nextjs/projects/petsoft/api/pets"
-  );
-  if (!response.ok) {
-    throw new Error("Something went wrong");
-  }
-  const data: Pet[] = await response.json();
+
+
+  console.log("revalidate path runs....")
+  const pets = await prisma.pet.findMany();
 
   return (
     <>
@@ -20,9 +19,10 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <div className="flex flex-col w-[1050px] mx-auto px-4 min-h-screen">
         <Header />
         <SearchContextProvider>
-          <PetContextProvider data={data}>{children}</PetContextProvider>
+          <PetContextProvider data={pets}>{children}</PetContextProvider>
         </SearchContextProvider>
         <Footer />
+        <Toaster position="top-right" />
       </div>
     </>
   );
