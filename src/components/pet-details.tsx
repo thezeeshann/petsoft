@@ -5,7 +5,7 @@ import Image from "next/image";
 import PetButton from "./pet-button";
 
 const PetDetails = () => {
-  const { selectedPet, handleCheckoutPet } = usePetContext();
+  const { selectedPet,handleCheckoutPet } = usePetContext();
 
   return (
     <section className="flex flex-col w-full h-full">
@@ -13,7 +13,8 @@ const PetDetails = () => {
         <EmptyView />
       ) : (
         <>
-          <div className="flex items-center bg-white px-8 py-5 border-b border-black/[0.08]">
+          <div className="flex items-center bg-white px-8 py-5 border-b border-black/[0.08] ">
+            <div className="flex gap-x-4">
             <Image
               src={selectedPet?.imageUrl}
               width={75}
@@ -21,20 +22,22 @@ const PetDetails = () => {
               className="w-[75px] h-[75px] rounded-full object-cover"
               alt=""
             />
-            <p className="text-3xl font-semibold leading-7 mt-5">
+            <h2 className="text-3xl font-semibold leading-7 mt-5">
               {selectedPet?.name}
-            </p>
+            </h2>
+            </div>
             <div className="ml-auto space-x-2">
               <PetButton actoinType="edit">Edit</PetButton>
 
               <PetButton
-                onClick={() => handleCheckoutPet(selectedPet.id)}
+                onClick={ async ()=> await handleCheckoutPet(selectedPet?.id) }
                 actoinType="checkout"
               >
                 Checkout
               </PetButton>
             </div>
           </div>
+          
 
           <div className="flex justify-around py-10 px-5 text-center">
             <div>
