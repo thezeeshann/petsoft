@@ -3,15 +3,13 @@ import Footer from "@/components/footer";
 import BackgroundPattern from "@/components/background-pattern";
 import PetContextProvider from "@/contexts/pet-context-provider";
 import SearchContextProvider from "@/contexts/search-context-provider";
-import prisma from "@/lib/db";
 import { Toaster } from "@/components/ui/sonner";
-
+import { checkAuth, getPetsByUserId } from "@/lib/server-utils";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
 
-
-  console.log("revalidate path runs....")
-  const pets = await prisma.pet.findMany();
+  const session = await checkAuth();
+  const pets = await getPetsByUserId(session.user.id);
 
   return (
     <>
