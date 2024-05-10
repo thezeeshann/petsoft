@@ -7,25 +7,24 @@ type SearchContextProviderProps = {
 };
 
 type TSeachContext = {
-    searchQuery: string;
-    handleChangeSearchQuery: (newValue: string) => void;
+  searchQuery: string;
+  handleChangeSearchQuery: (newValue: string) => void;
 };
 
 export const SearchContext = createContext<TSeachContext | null>(null);
 
-const SearchContextProvider = ({children }: SearchContextProviderProps) => {
-    
-    const [searchQuery, setSearchQuery] = useState("");
+const SearchContextProvider = ({ children }: SearchContextProviderProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
 
-    const handleChangeSearchQuery = (newValue:string)=>{
-        setSearchQuery(newValue)
-    }
+  const handleChangeSearchQuery = (newValue: string) => {
+    setSearchQuery(newValue);
+  };
 
   return (
     <SearchContext.Provider
       value={{
         searchQuery,
-        handleChangeSearchQuery
+        handleChangeSearchQuery,
       }}
     >
       {children}
