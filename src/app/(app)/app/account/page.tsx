@@ -1,15 +1,11 @@
 import React from "react";
 import H1 from "@/components/h1";
 import ContentBlock from "@/components/content-block";
-import { redirect } from "next/navigation";
 import SignOutBtn from "@/components/sign-out-btn";
 import { checkAuth } from "@/lib/server-utils";
 
 const Account = async () => {
-
-
   const session = await checkAuth();
-
 
   return (
     <main>

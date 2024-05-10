@@ -7,8 +7,7 @@ import PetDetails from "@/components/pet-details";
 import ContentBlock from "@/components/content-block";
 import PetButton from "@/components/pet-button";
 
-const Dashboard = async() => {
-
+const Dashboard = async () => {
   return (
     <main>
       <div className="flex items-center justify-between text-white py-8">
@@ -21,17 +20,16 @@ const Dashboard = async() => {
         </div>
         <div className="relative md:row-start-2 md:row-span-full md:col-start-1 md:col-span-1">
           <ContentBlock>
-            <Petlist  />
-            <div className="absolute bottom-4 right-4"> 
-
-            <PetButton actoinType="add"  />
+            <Petlist />
+            <div className="absolute bottom-4 right-4">
+              <PetButton actoinType="add" />
             </div>
           </ContentBlock>
         </div>
         <div className="md:row-start-1 md:row-span-full md:col-start-2 md:col-span-full">
-        <ContentBlock>
-          <PetDetails />
-        </ContentBlock>
+          <ContentBlock>
+            <PetDetails />
+          </ContentBlock>
         </div>
       </div>
     </main>

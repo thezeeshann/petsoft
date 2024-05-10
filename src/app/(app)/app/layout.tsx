@@ -7,7 +7,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { checkAuth, getPetsByUserId } from "@/lib/server-utils";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-
   const session = await checkAuth();
   const pets = await getPetsByUserId(session.user.id);
 
